@@ -1,0 +1,30 @@
+﻿
+@{
+    ViewBag.Title = "_LayoutTiendas";
+    Layout = "~/Views/Shared/_LayoutMenu.cshtml";
+}
+@section estilos{
+    <link rel="stylesheet" href="~/Contenido/estilos/TiendasCss.css" />
+    @RenderSection("estiloDentro", required: false)
+}
+<div class="container-xl">
+    <div class="row">
+        <div class="col-4 col-lg-2">
+            <div class="list-group" id="listaCategorias">
+                <h4>Categorias</h4>
+                <a data-value="0" class="list-group-item list-group-item-action" aria-current="true">
+                    Todas
+                </a>
+
+            </div>
+        </div>
+        @RenderBody()
+    </div>
+</div>
+
+
+
+@section Scripts{
+    @RenderSection("ScriptsDentro", required: false)
+}
+

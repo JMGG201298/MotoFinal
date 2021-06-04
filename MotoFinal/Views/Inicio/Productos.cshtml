@@ -1,0 +1,52 @@
+﻿@using MotoFinal.Models
+@model ModeloProducto
+@{
+    ViewBag.Title = "Productos";
+    Layout = "~/Views/Shared/_LayoutMenu.cshtml";
+}
+
+@section estilos{
+    <link type="text/css" rel="stylesheet" href="~/Contenido/estilos/ProductosCss.css"/>
+
+}
+<div class="container-xl">
+    <div class="row">
+        <div class="col-4 col-lg-2">
+            <div class="list-group" id="listaSubcategorias">
+                <h4>SubCategorias</h4>
+                <a data-value="0" class="list-group-item list-group-item-action lista-subcategorias" aria-current="true">
+                    Todos
+                </a>
+                @{
+                    for (int i = 0; i < Model.listaSubcategorias.Count; i++)
+                    {
+                        <a data-value="@Model.listaSubcategorias[i].idSubcategorias" class="list-group-item list-group-item-action lista-subcategorias">@Model.listaSubcategorias[i].nombre</a>
+                    }
+                }
+            </div>
+        </div>
+        <div class="col-8 col-lg-10">
+            <div class="row" id="filaTiendas">
+                @{
+                    for (int i = 0; i < Model.listaProductos.Count; i++)
+                    {
+                        <div data-value="@Model.listaProductos[i].idProducto" class="col-6 col-md-4 col-lg-2 cartaTienda">
+                            <div class="card-body cuerpo-carta">
+                                <img class="imgLogo" src="~/Contenido/imagenes/5936.jpg" />
+                                <h6 class="card-title titulo-carta"><a class="product" data-value="@Model.listaProductos[i].idProducto"><i class="fas fa-cart-plus"></i></a> @Model.listaProductos[i].nombre</h6>
+                            </div>
+                        </div>
+                    }
+                }
+            </div>
+        </div>
+    </div>
+</div>
+
+
+
+@section Scripts{
+    <script src="~/Contenido/Javascript/ProductosJS.js"></script>
+}
+
+

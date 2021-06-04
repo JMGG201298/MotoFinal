@@ -1,0 +1,10 @@
+﻿body {
+}
+.registrar-tienda-contenedor {
+    width: 70%;
+    margin: 25px auto;
+    padding: 20px;
+    border-radius: 20px;
+    border: 2px solid gray;
+    box-shadow: 10px 10px 5px 0px rgba(0,0,0,0.75);
+}

@@ -1,0 +1,156 @@
+﻿@using MotoFinal.Models
+@model Usuario
+@{
+    ViewBag.Title = "Registrar";
+    Layout = "~/Views/Shared/_LayoutMenu.cshtml";
+}
+
+@section estilos{
+    <link rel="stylesheet" href="~/Contenido/estilos/RegistrarseCss.css" />
+}
+
+<div class="container-xl">
+    <div class="row">
+        <div class="col-12 col-md-6">
+            <form action="/Inicio/Registrar?seleccion=cliente" method="post" enctype="multipart/form-data">
+                <div class="registrar-contenedor">
+                    <div class="form-group">
+                        <h5>Registrarse como Cliente</h5>
+                        <label for="txtUsuarioCliente">Usuario o correo: </label>
+                        <input id="txtUsuarioCliente" name="nombreUsuario" type="text" class="form-control" value="@if (ViewBag.selec == "C") {@Model.nombreUsuario}" />
+                        @if (ViewBag.selec == "C") { @Html.ValidationMessageFor(x => x.nombreUsuario, null, new { @class = "badge badge-danger" }) }
+                    </div>
+                    <div class="form-group">
+                        <label for="txtContrasenaCliente">Contraseña: </label>
+                        <input id="txtContrasenaCliente" name="contrasena" type="password" class="form-control" value="@if (ViewBag.selec == "C") {@Model.contrasena}" />
+                        @if (ViewBag.selec == "C") { @Html.ValidationMessageFor(x => x.contrasena, null, new { @class = "badge badge-danger" })}
+                        </div>
+    
+                        <div class="form-group">
+                        <label for="txtRepetirContrasenaCliente">Repetir contraseña: </label>
+                        <input id="txtRepetirContrasenaCliente" type="password" class="form-control" />
+                    </div>
+                    <div class="form-group">
+                        <label for="txtNombreCliente">Nombre(s): </label>
+                        <input id="txtNombreCliente" name="nombre" type="text" class="form-control" value="@if (ViewBag.selec == "C") {@Model.nombre}" />
+                        @if (ViewBag.selec == "C") { @Html.ValidationMessageFor(x => x.nombre, null, new { @class = "badge badge-danger" })}
+                    </div>
+                    <div class="form-group">
+                        <label for="txtApellido1Cliente">Apellido 1: </label>
+                        <input id="txtApellido1Cliente" name="apellido1" type="text" class="form-control" value="@if (ViewBag.selec == "C") {@Model.apellido1}" />
+                        @if (ViewBag.selec == "C") {@Html.ValidationMessageFor(x => x.apellido1, null, new { @class = "badge badge-danger" })}
+                    </div>
+                    <div class="form-group">
+                        <label for="txtApellido2Cliente">Apellido 2: </label>
+                        <input id="txtApellido2Cliente" name="apellido2" type="text" class="form-control" value="@if (ViewBag.selec == "C") {@Model.apellido2}" />
+                        @if (ViewBag.selec == "C") { @Html.ValidationMessageFor(x => x.apellido2, null, new { @class = "badge badge-danger" })}
+                    </div>
+                    <div class="form-group">
+                        <label for="cbSexoCliente">Sexo: </label>
+                        <select id="cbSexoCliente" class="form-control">
+                            @{
+                                bool sexoBoolMasculino = false;
+                                bool sexoBoolFemenino = false;
+                                if (Model.sexo == "Masculino")
+                                {
+                                    sexoBoolMasculino = true;
+                                }
+                                if (Model.sexo == "Femenino")
+                                {
+                                    sexoBoolFemenino = true;
+                                }
+                            }
+                            <option selected="selected" , disabled>Seleccione una opción</option>
+                            <option selected="@if (ViewBag.selec == "C") { @sexoBoolMasculino} " value="Masculino">Masculino</option>
+                            <option selected="@if (ViewBag.selec == "C") {@sexoBoolFemenino}" value="Femenino">Femenino</option>
+                        </select>
+                    </div>
+                    <div class="form-group">
+                        <label for="txtFechaNacimientoCliente">Fecha de nacimiento: </label>
+                        <input id="txtFechaNacimientoCliente" name="fechaNacimiento" type="date" class="form-control" value="@if (ViewBag.selec == "C") {@Model.fechaNacimiento}"/>
+                        @if (ViewBag.selec == "C") { @Html.ValidationMessageFor(x => x.fechaNacimiento, null, new { @class = "badge badge-danger" })}
+                    </div>
+                    <div class="form-group">
+                        <label for="txtTelefonoCliente">Telefono: </label>
+                        <input id="txtTelefonoCliente" name="telefono" type="tel" class="form-control" value="@if (ViewBag.selec == "C") { @Model.telefono} "/>
+                        @if (ViewBag.selec == "C") { @Html.ValidationMessageFor(x => x.telefono, null, new { @class = "badge badge-danger" })}
+                    </div>
+                    <button type="submit" class="btn btn-primary" id="btnRegistrarCliente">Registrarse</button>
+                </div>
+            </form>
+        </div>
+        <div class="col-12 col-md-6">
+            <form action="/Inicio/Registrar?seleccion=repartidor" method="post" enctype="multipart/form-data">
+                <div class="registrar-contenedor">
+                    <div class="form-group">
+                        <h5>Registrarse como Repartidor</h5>
+                        <label for="txtUsuarioRepartidor">Usuario o correo: </label>
+                        <input id="txtUsuarioRepartidor" name="nombreUsuario" type="text" class="form-control" value="@if (ViewBag.selec == "R") {@Model.nombreUsuario}"/>
+                        @if (ViewBag.selec == "R") { @Html.ValidationMessageFor(x => x.nombreUsuario, null, new { @class = "badge badge-danger" }) }
+                    </div>
+                    <div class="form-group">
+                        <label for="txtContrasenaRepartidor">Contraseña: </label>
+                        <input id="txtContrasenaRepartidor" name="contrasena" type="password" class="form-control" value="@if (ViewBag.selec == "R") {@Model.contrasena}" />
+                        @if (ViewBag.selec == "R"){@Html.ValidationMessageFor(x => x.contrasena, null, new { @class = "badge badge-danger" })}
+                        </div>
+    
+                        <div class="form-group">
+                        <label for="txtRepetirContrasenaRepartidor">Repetir contraseña: </label>
+                        <input id="txtRepetirContrasenaRepartidor" type="password" class="form-control" />
+                    </div>
+                    <div class="form-group">
+                        <label for="txtNombreRepartidor">Nombre(s): </label>
+                        <input id="txtNombreRepartidor" name="nombre" type="text" class="form-control" value="@if (ViewBag.selec == "R") { @Model.nombre} "/>
+                        @if (ViewBag.selec == "R") { @Html.ValidationMessageFor(x => x.nombre, null, new { @class = "badge badge-danger" })}
+                    </div>
+                    <div class="form-group">
+                        <label for="txtApellido1Repartidor">Apellido 1: </label>
+                        <input id="txtApellido1Repartidor" name="apellido1" type="text" class="form-control" value="@if (ViewBag.selec == "R") {@Model.apellido1}"/>
+                        @if (ViewBag.selec == "R") { @Html.ValidationMessageFor(x => x.apellido1, null, new { @class = "badge badge-danger" })}
+                    </div>
+                    <div class="form-group">
+                        <label for="txtApellido2Repartidor">Apellido 2: </label>
+                        <input id="txtApellido2Repartidor" name="apellido2" type="text" class="form-control" value="@if (ViewBag.selec == "R") {@Model.apellido2}"/>
+                        @if (ViewBag.selec == "R") { @Html.ValidationMessageFor(x => x.apellido2, null, new { @class = "badge badge-danger" })}
+                    </div>
+                    <div class="form-group">
+                        <label for="cbSexoRepartidor">Sexo: </label>
+                        <select id="cbSexoRepartidor" class="form-control">
+                            @{
+                                bool sexoBoolMasculino2 = false;
+                                bool sexoBoolFemenino2 = false;
+                                if (Model.sexo == "Masculino")
+                                {
+                                    sexoBoolMasculino2 = true;
+                                }
+                                if (Model.sexo == "Femenino")
+                                {
+                                    sexoBoolFemenino2 = true;
+                                }
+                            }
+                            <option selected="selected" , disabled>Seleccione una opción</option>
+                            <option selected="@if (ViewBag.selec == "R") {@sexoBoolMasculino2}" value="Masculino">Masculino</option>
+                            <option selected="@if (ViewBag.selec == "R") {@sexoBoolFemenino2}" value="Femenino">Femenino</option>
+                        </select>
+                    </div>
+                    <div class="form-group">
+                        <label for="txtFechaNacimientoRepartidor">Fecha de nacimiento: </label>
+                        <input id="txtFechaNacimientoRepartidor" name="fechaNacimiento" type="date" class="form-control" value="@if (ViewBag.selec == "R") { @Model.fechaNacimiento} "/>
+                        @if (ViewBag.selec == "R") { @Html.ValidationMessageFor(x => x.fechaNacimiento, null, new { @class = "badge badge-danger" })}
+                    </div>
+                    <div class="form-group">
+                        <label for="txtTelefonoRepartidor">Telefono: </label>
+                        <input id="txtTelefonoRepartidor" name="telefono" type="tel" class="form-control" value="@if (ViewBag.selec == "R") {@Model.telefono}"/>
+                        @if (ViewBag.selec == "R") { @Html.ValidationMessageFor(x => x.telefono, null, new { @class = "badge badge-danger" })}
+                    </div>
+                    <button type="submit" class="btn btn-primary" id="btnRegistrarRepartidor">Registrarse</button>
+                </div>
+            </form>
+        </div>
+    </div>
+</div>
+
+@section Scripts{
+
+}
+

@@ -1,0 +1,251 @@
+﻿
+@using MotoFinal.Models
+@using System.IO;
+@model ModeloEstablecimiento
+@{
+    ViewBag.Title = "RegistrarNegocio";
+    Layout = "~/Views/Shared/_LayoutMenu.cshtml";
+}
+@section estilos{
+    <link rel="stylesheet" href="~/Contenido/estilos/RegistrarNegocioCss.css" />
+}
+<form action="/Inicio/RegistrarNegocio" method="post" enctype="multipart/form-data">
+    <div class="registrar-tienda-contenedor">
+        <div class="form-group">
+            <label for="txtNombreNegocio">Nombre del negocio:</label>
+            <input type="text" class="form-control" id="txtNombreNegocio" name="establecimiento.nombre" value="@Model.establecimiento.nombre" />
+            @Html.ValidationMessageFor(x => x.establecimiento.nombre, null, new { @class = "badge badge-danger" })
+            <small id="nombreNegocioHelp" class="form-text text-muted">Este el nombre por el que serás indentficado en la página</small>
+        </div>
+        <div class="form-group">
+            <label for="cbCategoria">Categoria: </label>
+            <select id="cbCategoria" name="cbCategoria" class="form-control">
+            </select>
+            <small id="cbCategoriahHelp">Mantenga presionado shift para seleccionar mas de una opción</small>
+        </div>
+        <div class="form-group">
+            <label for="txtTelefono1">Telefono 1:</label>
+            <input type="text" class="form-control" id="txtTelefono1" name="establecimiento.telefono1" value="@Model.establecimiento.telefono1" />
+            @Html.ValidationMessageFor(x => x.establecimiento.telefono1, null, new { @class = "badge badge-danger" })
+            <small id="txtTelefono1Help" class="form-text text-muted">Ingresa un numero de telefono valido</small>
+        </div>
+        <div class="form-group">
+            <label for="txtTelefono2">Telefono 2:</label>
+            <input type="text" class="form-control" id="txtTelefono2" name="establecimiento.telefono2" value="@Model.establecimiento.telefono2" />
+            @Html.ValidationMessageFor(x => x.establecimiento.telefono2, null, new { @class = "badge badge-danger" })
+            <small id="txtTelefono2Help" class="form-text text-muted">Ingresa un numero de telefono valido</small>
+        </div>
+        <div class="form-group">
+            <label for="txtUsuario">Usuario: </label>
+            <input id="txtUsuario" name="usuario.nombreUsuario" type="text" class="form-control" value="@Model.usuario.nombreUsuario" />
+            @Html.ValidationMessageFor(x => x.usuario.nombreUsuario, null, new { @class = "badge badge-danger" })
+            <small id="txtUsuarioHelp">Elija un nombre de usuario</small>
+        </div>
+        <div class="form-group">
+            <label for="txtCorreo">Correo: </label>
+            <input id="txtCorreo" name="establecimiento.correo" type="email" class="form-control" value="@Model.establecimiento.correo" />
+            @Html.ValidationMessageFor(x => x.establecimiento.correo, null, new { @class = "badge badge-danger" })
+            <small id="txtCorreoHelp">Ingrese un correo</small>
+        </div>
+        <div class="form-group">
+            <label for="txtContrasena">Contraseña: </label>
+            <input id="txtContrasena" name="usuario.contrasena" type="password" class="form-control" value="@Model.usuario.contrasena" />
+            @Html.ValidationMessageFor(x => x.usuario.contrasena, null, new { @class = "badge badge-danger" })
+            <small id="txtContrasenaHelp">Elija una contraseña segura</small>
+        </div>
+        <div class="form-group">
+            <label for="txtRepetirContrasena">Repetir Contraseña: </label>
+            <input id="txtRepetirContrasena" name="usuario.contrasena" type="password" class="form-control" value="@Model.usuario.contrasena" />
+            @Html.ValidationMessageFor(x => x.usuario.contrasena, null, new { @class = "badge badge-danger" })
+            <small id="txtRepetirContrasenaHelp">Vuelva a escribir la contraseña</small>
+        </div>
+        <div class="form-group">
+            <label for="txtDireccionWeb">Dirección web: </label>
+            <input id="txtDireccionWeb" name="establecimiento.paginaweb" type="text" class="form-control" value="@Model.establecimiento.paginaWeb" />
+            @Html.ValidationMessageFor(x => x.establecimiento.paginaWeb, null, new { @class = "badge badge-danger" })
+            <small id="txtDireccionWebHelp"></small>
+        </div>
+        <div class="form-group">
+            <label for="txtFotoPerfil">Selecciona una foto de perfil</label>
+            <input accept=".jpg" type="file" class="form-control-file" id="txtFotoPerfil" name="txtFotoPerfil" />
+            @Html.ValidationMessageFor(x => x.establecimiento.fotoPerfil, null, new { @class = "badge badge-danger" })
+            <small id="txtFotoPerfilHelp">Está foto es la miniatura de tu negocio</small>
+        </div>
+        <div class="form-group">
+            <label for="txtFotoPortada">Selecciona una foto de portada</label>
+            <input accept=".jpg" class="form-control-file" id="txtFotoPortada" type="file" name="txtFotoPortada" />
+            @Html.ValidationMessageFor(x => x.establecimiento.fotoPortada, null, new { @class = "badge badge-danger" })
+            <small id="txtFotoPerfiPortada">Está foto se mostrara cuando entren al perfil de tu tienda</small>
+        </div>
+        <div class="form-group">
+            <label for="txtDescripcion">Descripcion: </label>
+            <input id="txtDescripcion" name="descripcion" type="text" class="form-control" value="@Model.establecimiento.descripcion" />
+            @Html.ValidationMessageFor(x => x.establecimiento.descripcion, null, new { @class = "badge badge-danger" })
+            <small id="txtDescripcionHelp">Escriba una descripcion</small>
+        </div>
+        <div class="form-group">
+            <h5>Datos Personales</h5>
+            <label for="txtNombre">Nombres(s): </label>
+            <input id="txtNombre" name="usuario.nombre" type="text" class="form-control" value="@Model.usuario.nombre" />
+            @Html.ValidationMessageFor(x => x.usuario.nombre, null, new { @class = "badge badge-danger" })
+            <small id="txtNombreHelp">Escribe tú nombre</small>
+        </div>
+        <div class="form-group">
+            <h5>Datos Personales</h5>
+            <label for="txtApellido1">Apellido 1: </label>
+            <input id="txtApellido1" name="usuario.apellido1" type="text" class="form-control" value="@Model.usuario.apellido1" />
+            @Html.ValidationMessageFor(x => x.usuario.apellido1, null, new { @class = "badge badge-danger" })
+            <small id="txtApellido1Help">Escribe tú Apellido</small>
+        </div>
+        <div class="form-group">
+            <label for="txtApellido2">Apellido 2: </label>
+            <input id="txtApellido2" name="usuario.apellido2" type="text" class="form-control" value="@Model.usuario.apellido2" />
+            @Html.ValidationMessageFor(x => x.usuario.apellido2, null, new { @class = "badge badge-danger" })
+            <small id="txtApellido1Help">Escribe tú Apellido</small>
+        </div>
+        <div class="form-group">
+            <label for="txtApellido2">Fecha de nacimiento: </label>
+            <input id="txtApellido2" name="usuario.fechaNacimiento" type="date" class="form-control" value="@Model.usuario.fechaNacimiento" />
+            @Html.ValidationMessageFor(x => x.usuario.fechaNacimiento, null, new { @class = "badge badge-danger" })
+        </div>
+        <div class="form-group">
+            <label for="cbSexo">Sexo: </label>
+            <select id="cbSexo" name="usuario.sexo" class="form-control">
+                @{
+                    bool sexoBoolMasculino = false;
+                    bool sexoBoolFemenino = false;
+                    if (Model.usuario.sexo == "Masculino")
+                    {
+                        sexoBoolMasculino = true;
+                    }
+                    if (Model.usuario.sexo == "Femenino")
+                    {
+                        sexoBoolFemenino = true;
+                    }
+                }
+                <option selected="selected" , disabled>Seleccione una opción</option>
+                <option selected="@sexoBoolMasculino" value="Masculino">Masculino</option>
+                <option selected="@sexoBoolFemenino" value="Femenino">Femenino</option>
+            </select>
+            @Html.ValidationMessageFor(x => x.usuario.sexo, null, new { @class = "badge badge-danger" })
+            <small id="cbCategoriahHelp">Mantenga presionado shift para seleccionar mas de una opción</small>
+        </div>
+        <div class="form-group">
+            <label for="txtTelefono">Telefono Personal:</label>
+            <input type="text" class="form-control" id="txtTelefono" name="usuario.telefono" value="@Model.usuario.telefono" />
+            @Html.ValidationMessageFor(x => x.usuario.telefono, null, new { @class = "badge badge-danger" })
+            <small id="txtTelefonoHelp" class="form-text text-muted">Ingresa un numero de telefono valido</small>
+        </div>
+        <div class="form-group">
+            <h5>Datos del lugar</h5>
+            <label for="txtCalle">Calle:</label>
+            <input type="text" class="form-control" id="txtCalle" name="domicilio.calle" value="@Model.domicilio.calle" />
+            @Html.ValidationMessageFor(x => x.domicilio.calle, null, new { @class = "badge badge-danger" })
+        </div>
+        <div class="form-group">
+            <label for="txtEntreCalle">Entre Calle:</label>
+            <input type="text" class="form-control" id="txtEntreCalle" name="domicilio.entreCalle" value="@Model.domicilio.entreCalle" />
+            @Html.ValidationMessageFor(x => x.domicilio.entreCalle, null, new { @class = "badge badge-danger" })
+        </div>
+        <div class="form-group">
+            <label for="txtYCalle">Y Calle:</label>
+            <input type="text" class="form-control" id="txtYCalle" name="domicilio.yCalle" value="@Model.domicilio.yCalle" />
+            @Html.ValidationMessageFor(x => x.domicilio.yCalle, null, new { @class = "badge badge-danger" })
+        </div>
+        <div class="form-group">
+            <label for="cbPais">País: </label>
+            <select id="cbPais" name="domicilio.Pais" class="form-control">
+                @{
+                    bool boolMexico = false;
+                    bool boolArgentina = false;
+                    bool boolColombia = false;
+                    bool boolCostaRica = false;
+                    bool boolPeru = false;
+                    bool boolHonduras = false;
+                    bool boolBrasil = false;
+                    bool boolEstadosUnidos = false;
+                    bool boolCanada = false;
+                    if (Model.domicilio.pais == "Mexico")
+                    {
+                        boolMexico = true;
+                    }
+                    if (Model.domicilio.pais == "Argentina")
+                    {
+                        boolArgentina = true;
+                    }
+                    if (Model.domicilio.pais == "Colombia")
+                    {
+                        boolColombia = true;
+                    }
+                    if (Model.domicilio.pais == "Costa Rica")
+                    {
+                        boolCostaRica = true;
+                    }
+                    if (Model.domicilio.pais == "Peru")
+                    {
+                        boolPeru = true;
+                    }
+                    if (Model.domicilio.pais == "Honduras")
+                    {
+                        boolHonduras = true;
+                    }
+                    if (Model.domicilio.pais == "Brasil")
+                    {
+                        boolBrasil = true;
+                    }
+                    if (Model.domicilio.pais == "Estados Unidos")
+                    {
+                        boolEstadosUnidos = true;
+                    }
+                    if (Model.domicilio.pais == "Canada")
+                    {
+                        boolCanada = true;
+                    }
+                }
+                <option selected="selected" disabled>Seleccione una opción</option>
+                <option selected="@boolMexico" value="Mexico">México</option>
+                <option selected="@boolArgentina" value="Argentina">Argentina</option>
+                <option selected="@boolColombia" value="Colombia">Colombia</option>
+                <option selected="@boolCostaRica" value="Costa Rica">Costa Rica</option>
+                <option selected="@boolPeru" value="Peru">Perú</option>
+                <option selected="@boolHonduras" value="Honduras">Honduras</option>
+                <option selected="@boolBrasil" value="Brasil">Brasil</option>
+                <option selected="@boolEstadosUnidos" value="Estados Unidos">Estados Unidos</option>
+                <option selected="@boolCanada" value="Canada">Canada</option>
+            </select>
+            @Html.ValidationMessageFor(x => x.domicilio.pais, null, new { @class = "badge badge-danger" })
+        </div>
+        <div class="form-group">
+            <label for="txtMunicipio">Municipio:</label>
+            <input type="text" class="form-control" id="txtMunicipio" name="domicilio.municipio" value="@Model.domicilio.municipio" />
+            @Html.ValidationMessageFor(x => x.domicilio.municipio, null, new { @class = "badge badge-danger" })
+        </div>
+        <div class="form-group">
+            <label for="txtEstado">Y Calle:</label>
+            <input type="text" class="form-control" id="txtEstado" name="domicilio.estado" value="@Model.domicilio.estado" />
+            @Html.ValidationMessageFor(x => x.domicilio.estado, null, new { @class = "badge badge-danger" })
+        </div>
+        <div class="form-group">
+            <label for="txtCodigoPostal">Código Postal:</label>
+            <input type="text" class="form-control" id="txtCodigoPostal" name="domicilio.codigoPostal" value="@Model.domicilio.codigoPostal" />
+            @Html.ValidationMessageFor(x => x.domicilio.codigoPostal, null, new { @class = "badge badge-danger" })
+        </div>
+        <div class="form-group">
+            <label for="txtCodigoPostal">Descripción del domicilio:</label>
+            <input type="text" class="form-control" id="txtDescripcionDomicilio" name="domicilio.descripcion" value="@Model.domicilio.descripcion" />
+            @Html.ValidationMessageFor(x => x.domicilio.descripcion, null, new { @class = "badge badge-danger" })
+        </div>
+        <div class="form-group form-check">
+            <input type="checkbox" class="form-check-input" id="txtTerminos" name="txtTerminos">
+            <label class="form-check-label" for="txtTerminos">Aceptó <a href="#">términos y condiciones</a> del servicio</label>
+        </div>
+        <Button type="submit" class="btn btn-primary" ID="btnRegistrarNegocio">Registrar Negocio</Button>
+    </div>
+</form>
+
+
+
+@section Scripts{
+    <script src="~/Contenido/Javascript/RegistrarNegociojs.js"></script>
+}
+

@@ -1,0 +1,15 @@
+﻿
+@{
+    ViewBag.Title = "NegocioGuardado";
+}
+
+<h2>Has sido registrado correctamente, serás redireccionado en 5 segundos a la página inicial para que inicies sesión</h2>
+<script>
+    document.addEventListener("DDOMContentLoaded", function (e) {
+        setTimeout("rediccionar()", 5000);
+    });
+    function rediccionar() {
+        window.location.href = "Inicio/Index";
+    }
+</script>
+

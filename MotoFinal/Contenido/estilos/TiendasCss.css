@@ -1,0 +1,23 @@
+﻿body {
+}
+p{
+    font-size: 14px;
+}
+.titulo-carta {
+    text-align: center;
+    width: 100%;
+    white-space: nowrap;
+    text-overflow: ellipsis;
+    overflow: hidden;
+    font-size: 13px;
+    font-weight: 400;
+}
+.cuerpo-carta {
+    padding: 5px;
+    border: 1px solid black;
+    border-radius: 5px;
+}
+.imgLogo {
+    width: 100%
+}
+

@@ -1,0 +1,78 @@
+﻿
+#imgLogo {
+    width: 55px;
+    height: 55px;
+}
+
+#nav-left {
+    margin-left: 10px;
+}
+.pie {
+    background-color: dimgray;
+}
+p {
+    font-size: 13px;
+    margin: 0px;
+    padding: 0px;
+    font-weight: 400;
+}
+
+#parrafo-lista {
+    color: white;
+    padding-top: 0px;
+    font-size: 12px;
+    padding-bottom: 0px;
+}
+#parrafo-lista a{
+    color: white;
+    text-decoration: none;
+}
+#parrafo-lista a:hover {
+    text-decoration: none;
+    color: gainsboro;
+    font-size: 14px;
+}
+
+.columna-categorias div.row:last-child p#parrafo-lista {
+    padding-bottom: 20px
+}
+
+.columna-categorias div.row:first-child p#parrafo-lista {
+    padding-top: 20px
+}
+#mapaGoogle {
+    margin-top:10px;
+    height: 400px;
+    width:100%;
+}
+#parrafoDireccion {
+    display: inline-block;
+    width: 150px;
+    white-space: nowrap;
+    text-overflow: ellipsis;
+    overflow: hidden;
+}
+.lista-botones {
+    padding: 4px;
+}
+
+.btnSumar {
+    border: none;
+    background-color: white;
+    color: green;
+    font-weight: 500;
+    font-size: 20px;
+}
+.btnRestar {
+    border: none;
+    background-color: white;
+    color: red;
+    font-weight: 500;
+    font-size: 20px;
+}
+.contador{
+    width: 50px;
+    border-radius:6px;
+    border: none;
+    border-bottom: 2px solid black;
+}
